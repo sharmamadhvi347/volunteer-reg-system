@@ -327,10 +327,9 @@ app.use((req, res) => {
 });
 
 // Auto-create admin on first boot if none exists
-const { readDb, writeDb } = require('./db');
-const bcrypt = require('bcryptjs');
 const _db = readDb();
 if (_db.admins.length === 0 && process.env.ADMIN_USERNAME) {
+  const bcrypt = require('bcryptjs');
   _db.admins.push({
     id: _db.nextAdminId,
     username: process.env.ADMIN_USERNAME,
@@ -338,7 +337,7 @@ if (_db.admins.length === 0 && process.env.ADMIN_USERNAME) {
   });
   _db.nextAdminId += 1;
   writeDb(_db);
-  console.log('Admin account auto-created:', process.env.ADMIN_USERNAME);
+  console.log('Admin auto-created:', process.env.ADMIN_USERNAME);
 }
 
 app.listen(PORT, () => {
