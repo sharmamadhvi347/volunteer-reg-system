@@ -326,6 +326,21 @@ app.use((req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
+// Auto-create admin on first boot if none exists
+const { readDb, writeDb } = require('./db');
+const bcrypt = require('bcryptjs');
+const _db = readDb();
+if (_db.admins.length === 0 && process.env.ADMIN_USERNAME) {
+  _db.admins.push({
+    id: _db.nextAdminId,
+    username: process.env.ADMIN_USERNAME,
+    passwordHash: bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10)
+  });
+  _db.nextAdminId += 1;
+  writeDb(_db);
+  console.log('Admin account auto-created:', process.env.ADMIN_USERNAME);
+}
+
 app.listen(PORT, () => {
   console.log(`NayePankh Volunteer Registration System running at http://localhost:${PORT}`);
   console.log(`Admin dashboard: http://localhost:${PORT}/admin`);

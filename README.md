@@ -90,12 +90,12 @@ Default credentials (change in `.env` before running):
 npm start
 ```
 
-The server will start at **http://localhost:3000**
+The server will start at **https://volunteer-reg-system.onrender.com/**
 
 | Page | URL |
 |---|---|
-| Volunteer registration form | http://localhost:3000/ |
-| Admin dashboard | http://localhost:3000/admin |
+| Volunteer registration form | https://volunteer-reg-system.onrender.com/ |
+| Admin dashboard | https://volunteer-reg-system.onrender.com/admin |
 
 ---
 
@@ -146,9 +146,5 @@ The server will start at **http://localhost:3000**
   ```
 - For HTTPS (required in production), put the app behind an Nginx reverse proxy with a Let's Encrypt SSL certificate
 
----
 
-## Built for NayePankh Foundation Internship
-Full Stack Development Internship — Option 2: Volunteer Registration System
-
-Designed to match the visual identity of [nayepankh.com](https://nayepankh.com) — same Poppins typography, purple accent palette, and clean minimal card layout.
+Designed to match the visual identity of [nayepankh.com](https://nayepankh.com)
