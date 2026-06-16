@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer With Us | NayePankh Foundation</title>
+  <meta name="description" content="Register as a volunteer with NayePankh Foundation, a UP Government registered NGO. Join our mission to uplift the underprivileged." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Real NayePankh photo — their About Us hero (happy team, actual ground event) */
+    .np-hero-bg {
+      position: relative;
+      background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/whatsapp-image-2023-02-05-at-9.13.06-am-mp8eQ9De2eHjvE3j.jpeg');
+      background-size: cover;
+      background-position: center 40%;
+      padding: 90px 20px 80px;
+      text-align: center;
+    }
+    .np-hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(20, 10, 55, 0.72) 0%,
+        rgba(20, 10, 55, 0.55) 55%,
+        rgba(250, 250, 253, 1) 100%
+      );
+    }
+    .np-hero-bg > * { position: relative; z-index: 1; }
+    .np-hero-bg .np-hero-eyebrow {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.40);
+      backdrop-filter: blur(4px);
+    }
+    .np-hero-bg h1 {
+      color: #fff;
+      font-size: 36px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    .np-hero-bg p {
+      color: rgba(255,255,255,0.90);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.20);
+    }
+
+    /* ---- Form page polish ---- */
+    .np-brand-name { font-size: 15px; font-weight: 700; letter-spacing: -0.2px; }
+    .np-brand-tagline { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #8B8FA8; }
+    .np-topbar { box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+
+    .np-card {
+      border: none;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(80,60,200,0.10);
+    }
+    .np-section-title { font-weight: 700; letter-spacing: -0.2px; }
+    .np-field label { font-size: 13px; font-weight: 600; color: #3A3A4A; letter-spacing: -0.1px; }
+    .np-field input, .np-field select, .np-field textarea {
+      border-radius: 10px;
+      border: 1.5px solid #E2E4EE;
+      font-size: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .np-field input:focus, .np-field select:focus, .np-field textarea:focus {
+      border-color: #6C5CE0;
+    }
+    .np-checkbox {
+      border-radius: 10px;
+      border: 1.5px solid #E2E4EE;
+    }
+    .np-btn-primary {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding: 14px 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(108,92,224,0.30);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="np-topbar">
+    <div class="np-brand">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/YKbL494Mv8Ip3qgy/logo-AVLW2LLWZkI8v845.png" alt="NayePankh Foundation Logo" style="height:44px; width:44px; object-fit:contain; border-radius:8px; background:#fff; padding:2px;" />
+      <div class="np-brand-text">
+        <span class="np-brand-name">NayePankh Foundation</span>
+        <span class="np-brand-tagline">UP Govt. | 80G &amp; 12A Registered NGO</span>
+      </div>
+    </div>
+    <div class="np-topbar-actions">
+      <a href="https://nayepankh.com/" target="_blank" rel="noopener">Main Website</a>
+      <a href="https://nayepankh.com/about-us" target="_blank" rel="noopener">About Us</a>
+      <a href="/admin">Admin Login</a>
+    </div>
+  </header>
+
+  <main class="np-page">
+    <section class="np-hero np-hero-bg">
+      <span class="np-hero-eyebrow">Join Our Team</span>
+      <h1>Become a NayePankh Volunteer</h1>
+      <p>
+        Whether you can give your time, your skills, or just an afternoon a month —
+        there's a place for you on our team. Fill out the form below and we'll get
+        in touch with the next steps.
+      </p>
+    </section>
+
+    <div class="np-card">
+      <div id="formAlert" class="np-alert"></div>
+
+      <form id="volunteerForm" novalidate>
+        <div class="np-form-grid">
+
+          <div class="np-field">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required />
+          </div>
+
+          <div class="np-field">
+            <label for="age">Age *</label>
+            <input type="number" id="age" name="age" min="13" max="100" placeholder="e.g. 21" required />
+          </div>
+
+          <div class="np-field">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="np-field">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required />
+          </div>
+
+          <div class="np-field np-field-full">
+            <label for="city">City *</label>
+            <input type="text" id="city" name="city" placeholder="Where are you based?" required />
+          </div>
+
+          <div class="np-field np-field-full">
+            <label>Areas of Interest * <span class="np-hint">(select all that apply)</span></label>
+            <div class="np-checkbox-grid" id="areasGrid">
+              <!-- populated by script.js -->
+            </div>
+          </div>
+
+          <div class="np-field np-field-full">
+            <label for="availability">Availability *</label>
+            <input type="text" id="availability" name="availability" placeholder="e.g. Weekends, 4-5 hours per week" required />
+            <span class="np-hint">Let us know when and how often you can volunteer.</span>
+          </div>
+
+          <div class="np-field np-field-full">
+            <label for="message">Anything else you'd like to share? <span class="np-hint">(optional)</span></label>
+            <textarea id="message" name="message" placeholder="Skills, past volunteering experience, motivation, etc."></textarea>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 28px;">
+          <button type="submit" id="submitBtn" class="np-btn np-btn-primary np-btn-block">Register as Volunteer</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="np-card" id="thankYouCard" style="display:none; text-align:center;">
+      <h2 style="margin-top:0;">Thank you for registering!</h2>
+      <p style="color: var(--np-text-muted);">
+        We've received your details and our team will reach out to you soon
+        with the next steps. In the meantime, you can follow our work on
+        <a href="https://www.instagram.com/nayepankhfoundation" target="_blank" rel="noopener">Instagram</a>.
+      </p>
+      <button class="np-btn np-btn-secondary" onclick="window.location.reload()">Register Another Volunteer</button>
+    </div>
+  </main>
+
+  <footer class="np-footer">
+    <p>
+      NayePankh Foundation &middot; contact@nayepankh.com &middot; +91-8318500748
+    </p>
+    <p>
+      <a href="https://nayepankh.com/" target="_blank" rel="noopener">nayepankh.com</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+/* ============================================================
+   NayePankh Foundation — Volunteer Registration System
+   Visual identity matches nayepankh.com: clean white background,
+   lavender/purple accent, soft rounded cards, generous whitespace,
+   simple modern sans-serif typography.
+   ============================================================ */
+
+:root {
+  --np-purple: #6C5CE0;
+  --np-purple-dark: #4F3FBF;
+  --np-purple-light: #F3F1FD;
+  --np-purple-pale: #EDEAFB;
+  --np-text: #2E2E3A;
+  --np-text-muted: #6B6B7A;
+  --np-border: #E6E4F3;
+  --np-bg: #FAFAFD;
+  --np-white: #FFFFFF;
+  --np-success: #2E9E5B;
+  --np-success-bg: #E7F7EE;
+  --np-warning: #B8860B;
+  --np-warning-bg: #FBF3DD;
+  --np-danger: #C0392B;
+  --np-danger-bg: #FBEAE7;
+  --np-info: #3A6FD8;
+  --np-info-bg: #EAF1FD;
+  --np-radius: 14px;
+  --np-radius-sm: 8px;
+  --np-shadow: 0 4px 24px rgba(108, 92, 224, 0.08);
+  --np-font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--np-font);
+  background: var(--np-bg);
+  color: var(--np-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--np-purple-dark);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Top bar ---------- */
+
+.np-topbar {
+  background: var(--np-white);
+  border-bottom: 1px solid var(--np-border);
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.np-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.np-brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--np-purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.np-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.np-brand-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--np-text);
+}
+
+.np-brand-tagline {
+  font-size: 12px;
+  color: var(--np-text-muted);
+}
+
+.np-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.np-topbar-actions a {
+  color: var(--np-text-muted);
+}
+
+.np-topbar-actions a:hover {
+  color: var(--np-purple-dark);
+}
+
+/* ---------- Page shell ---------- */
+
+.np-page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+.np-hero {
+  text-align: center;
+  padding: 56px 20px 36px;
+}
+
+.np-hero-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--np-purple-dark);
+  background: var(--np-purple-pale);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+
+.np-hero h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--np-text);
+}
+
+.np-hero p {
+  font-size: 15px;
+  color: var(--np-text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ---------- Cards ---------- */
+
+.np-card {
+  background: var(--np-white);
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+  padding: 32px;
+}
+
+.np-card + .np-card {
+  margin-top: 24px;
+}
+
+.np-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--np-text);
+}
+
+.np-section-subtitle {
+  font-size: 13px;
+  color: var(--np-text-muted);
+  margin: 0 0 24px;
+}
+
+/* ---------- Forms ---------- */
+
+.np-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.np-form-grid .np-field-full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .np-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.np-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.np-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--np-text);
+}
+
+.np-field .np-hint {
+  font-size: 12px;
+  color: var(--np-text-muted);
+}
+
+.np-field input,
+.np-field select,
+.np-field textarea {
+  font-family: var(--np-font);
+  font-size: 14px;
+  padding: 11px 14px;
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius-sm);
+  background: var(--np-white);
+  color: var(--np-text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.np-field input:focus,
+.np-field select:focus,
+.np-field textarea:focus {
+  border-color: var(--np-purple);
+  box-shadow: 0 0 0 3px var(--np-purple-pale);
+}
+
+.np-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.np-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .np-checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.np-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--np-text);
+  padding: 10px 12px;
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius-sm);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.np-checkbox:hover {
+  border-color: var(--np-purple);
+  background: var(--np-purple-light);
+}
+
+.np-checkbox input {
+  margin-top: 2px;
+  accent-color: var(--np-purple);
+}
+
+/* ---------- Buttons ---------- */
+
+.np-btn {
+  font-family: var(--np-font);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.np-btn:active {
+  transform: scale(0.98);
+}
+
+.np-btn-primary {
+  background: var(--np-purple);
+  color: #fff;
+}
+
+.np-btn-primary:hover {
+  background: var(--np-purple-dark);
+}
+
+.np-btn-primary:disabled {
+  background: #C9C3F2;
+  cursor: not-allowed;
+}
+
+.np-btn-secondary {
+  background: var(--np-white);
+  color: var(--np-purple-dark);
+  border: 1px solid var(--np-border);
+}
+
+.np-btn-secondary:hover {
+  border-color: var(--np-purple);
+  background: var(--np-purple-light);
+}
+
+.np-btn-danger {
+  background: var(--np-white);
+  color: var(--np-danger);
+  border: 1px solid var(--np-border);
+}
+
+.np-btn-danger:hover {
+  border-color: var(--np-danger);
+  background: var(--np-danger-bg);
+}
+
+.np-btn-sm {
+  padding: 7px 14px;
+  font-size: 12px;
+}
+
+.np-btn-block {
+  width: 100%;
+}
+
+/* ---------- Alerts / messages ---------- */
+
+.np-alert {
+  border-radius: var(--np-radius-sm);
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 18px;
+  display: none;
+}
+
+.np-alert.is-visible {
+  display: block;
+}
+
+.np-alert-success {
+  background: var(--np-success-bg);
+  color: var(--np-success);
+}
+
+.np-alert-error {
+  background: var(--np-danger-bg);
+  color: var(--np-danger);
+}
+
+.np-alert-info {
+  background: var(--np-info-bg);
+  color: var(--np-info);
+}
+
+/* ---------- Footer ---------- */
+
+.np-footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--np-text-muted);
+  padding: 32px 20px;
+}
+
+.np-footer a {
+  color: var(--np-text-muted);
+}
+
+/* ---------- Admin layout ---------- */
+
+.np-admin-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.np-login-wrap {
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.np-login-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.np-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 800px) {
+  .np-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.np-stat-card {
+  background: var(--np-white);
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius);
+  padding: 18px 20px;
+}
+
+.np-stat-label {
+  font-size: 12px;
+  color: var(--np-text-muted);
+  margin: 0 0 6px;
+}
+
+.np-stat-value {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--np-text);
+  margin: 0;
+}
+
+.np-stat-value.purple { color: var(--np-purple-dark); }
+.np-stat-value.success { color: var(--np-success); }
+.np-stat-value.warning { color: var(--np-warning); }
+.np-stat-value.info { color: var(--np-info); }
+
+.np-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.np-toolbar-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+}
+
+.np-toolbar-filters input,
+.np-toolbar-filters select {
+  font-family: var(--np-font);
+  font-size: 13px;
+  padding: 9px 12px;
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius-sm);
+  background: var(--np-white);
+  color: var(--np-text);
+}
+
+.np-table-wrap {
+  overflow-x: auto;
+}
+
+table.np-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.np-table th,
+table.np-table td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--np-border);
+  white-space: nowrap;
+}
+
+table.np-table th {
+  color: var(--np-text-muted);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+table.np-table td.np-cell-wrap {
+  white-space: normal;
+  max-width: 220px;
+}
+
+table.np-table tbody tr:hover {
+  background: var(--np-purple-light);
+}
+
+.np-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.np-badge-new {
+  background: var(--np-info-bg);
+  color: var(--np-info);
+}
+
+.np-badge-contacted {
+  background: var(--np-warning-bg);
+  color: var(--np-warning);
+}
+
+.np-badge-active {
+  background: var(--np-success-bg);
+  color: var(--np-success);
+}
+
+.np-badge-inactive {
+  background: #F0F0F0;
+  color: var(--np-text-muted);
+}
+
+.np-status-select {
+  font-family: var(--np-font);
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius-sm);
+  background: var(--np-white);
+  color: var(--np-text);
+}
+
+.np-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--np-text-muted);
+}
+
+.np-loading {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--np-text-muted);
+  font-size: 13px;
+}
+
+.np-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.np-header-row h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.np-pill-link {
+  font-size: 13px;
+  color: var(--np-purple-dark);
+  background: var(--np-purple-pale);
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--np-font);
+  font-weight: 600;
+}
+
+.np-pill-link:hover {
+  background: var(--np-purple);
+  color: #fff;
+}

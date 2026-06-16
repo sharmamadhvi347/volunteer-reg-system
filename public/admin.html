@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | NayePankh Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Real NayePankh ground-work photo — early volunteer days, warm and real */
+    .np-login-wrap {
+      background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/img-20210530-wa0251_1622926825-mP4ZLjyn3ecJBJrR.jpg');
+      background-size: cover;
+      background-position: center 35%;
+      position: relative;
+    }
+    .np-login-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 10, 55, 0.58);
+      backdrop-filter: blur(1px);
+    }
+    .np-login-wrap > * { position: relative; z-index: 1; }
+    .np-login-card {
+      box-shadow: 0 8px 40px rgba(0,0,0,0.28);
+    }
+    /* ---- Dashboard polish ---- */
+    body { background: #F4F5F9; }
+
+    .np-topbar {
+      border-bottom: 1px solid #E2E4EE;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    .np-brand-name { font-size: 15px; font-weight: 700; letter-spacing: -0.2px; }
+    .np-brand-tagline { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #8B8FA8; }
+
+    .np-admin-shell { max-width: 1180px; }
+
+    .np-header-row h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      color: #1A1A2E;
+    }
+
+    /* Stat cards — refined */
+    .np-stat-card {
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 22px 24px;
+      background: #fff;
+    }
+    .np-stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #9095A8;
+      margin-bottom: 8px;
+    }
+    .np-stat-value { font-size: 32px; font-weight: 700; letter-spacing: -1px; }
+
+    /* Main cards */
+    .np-card {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .np-section-title { font-size: 16px; font-weight: 700; letter-spacing: -0.2px; }
+
+    /* Table */
+    table.np-table th {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #9095A8;
+      background: #F8F9FC;
+      padding: 10px 14px;
+    }
+    table.np-table td { font-size: 13.5px; color: #2E2E3A; }
+    table.np-table tbody tr:hover { background: #F3F1FD; }
+
+    /* Search/filter bar */
+    .np-toolbar-filters input,
+    .np-toolbar-filters select {
+      border-radius: 10px;
+      border: 1.5px solid #E2E4EE;
+      font-size: 13px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .np-toolbar-filters input:focus,
+    .np-toolbar-filters select:focus {
+      border-color: #6C5CE0;
+      outline: none;
+    }
+
+    /* Top cities bar chart feel */
+    #topCities > div { border-bottom-color: #F0F1F5; }
+
+  </style>
+</head>
+<body>
+
+  <header class="np-topbar">
+    <div class="np-brand">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/YKbL494Mv8Ip3qgy/logo-AVLW2LLWZkI8v845.png" alt="NayePankh Foundation Logo" style="height:44px; width:44px; object-fit:contain; border-radius:8px; background:#fff; padding:2px;" />
+      <div class="np-brand-text">
+        <span class="np-brand-name">NayePankh Foundation</span>
+        <span class="np-brand-tagline">Volunteer Management</span>
+      </div>
+    </div>
+    <div class="np-topbar-actions">
+      <a href="/">Volunteer Form</a>
+      <a href="https://nayepankh.com/" target="_blank" rel="noopener">Main Website</a>
+      <span id="logoutWrap" style="display:none;">
+        <button id="logoutBtn" class="np-pill-link">Log Out</button>
+      </span>
+    </div>
+  </header>
+
+  <!-- Login screen -->
+  <div id="loginWrap" class="np-login-wrap">
+    <div class="np-card np-login-card">
+      <div style="text-align:center; margin-bottom:18px;"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/YKbL494Mv8Ip3qgy/logo-AVLW2LLWZkI8v845.png" alt="NayePankh Logo" style="height:72px; object-fit:contain;" /></div><h2 style="margin-top:0; margin-bottom: 4px; text-align:center;">Admin Login</h2>
+      <p class="np-section-subtitle">Sign in to manage volunteer registrations.</p>
+
+      <div id="loginAlert" class="np-alert np-alert-error"></div>
+
+      <form id="loginForm">
+        <div class="np-field" style="margin-bottom: 14px;">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" required />
+        </div>
+        <div class="np-field" style="margin-bottom: 22px;">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required />
+        </div>
+        <button type="submit" id="loginBtn" class="np-btn np-btn-primary np-btn-block">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboardWrap" class="np-admin-shell" style="display:none;">
+
+    <div class="np-header-row">
+      <h1>Volunteer Dashboard</h1>
+      <a id="downloadReport" href="/api/admin/report.csv" class="np-pill-link" style="text-decoration:none;">Download CSV Report</a>
+    </div>
+
+    <div class="np-stats-grid">
+      <div class="np-stat-card">
+        <p class="np-stat-label">Total Volunteers</p>
+        <p class="np-stat-value purple" id="statTotal">--</p>
+      </div>
+      <div class="np-stat-card">
+        <p class="np-stat-label">New</p>
+        <p class="np-stat-value info" id="statNew">--</p>
+      </div>
+      <div class="np-stat-card">
+        <p class="np-stat-label">Active</p>
+        <p class="np-stat-value success" id="statActive">--</p>
+      </div>
+      <div class="np-stat-card">
+        <p class="np-stat-label">Contacted</p>
+        <p class="np-stat-value warning" id="statContacted">--</p>
+      </div>
+    </div>
+
+    <div class="np-card">
+      <p class="np-section-title">Top Cities</p>
+      <p class="np-section-subtitle">Where your volunteers are coming from.</p>
+      <div id="topCities" style="font-size: 13px; color: var(--np-text-muted);">Loading...</div>
+    </div>
+
+    <div class="np-card">
+      <div class="np-toolbar">
+        <div class="np-toolbar-filters">
+          <input type="text" id="searchInput" placeholder="Search by name, email, or city..." style="min-width: 220px;" />
+          <select id="statusFilter">
+            <option value="All">All Statuses</option>
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+          <select id="areaFilter">
+            <option value="All">All Areas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="np-table-wrap">
+        <table class="np-table" id="volunteersTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Age / City</th>
+              <th>Areas of Interest</th>
+              <th>Availability</th>
+              <th>Status</th>
+              <th>Registered</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="volunteersBody">
+            <tr><td colspan="8" class="np-loading">Loading volunteers...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
