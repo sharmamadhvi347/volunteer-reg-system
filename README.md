@@ -4,6 +4,14 @@ A full-stack Volunteer Registration System built for the NayePankh Foundation in
 
 ---
 
+## Admin Access
+
+Live demo credentials:
+
+- **URL:** https://volunteer-reg-system.onrender.com/admin
+- **Username:** admin
+- **Password:** NayePankh@2026
+
 ## Features
 
 ### Public-facing
